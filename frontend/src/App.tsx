@@ -1,5 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import "./App.css";
 
 interface AppProps {
   contract: any;
@@ -8,28 +9,18 @@ interface AppProps {
   wallet: any;
 }
 
-const App = (props: AppProps)  => {
-  const {contract, currentUser, nearConfig, wallet} = props;
-  console.log(contract, currentUser, nearConfig, wallet);
-  
+const App = ({ contract, currentUser, nearConfig, wallet }: AppProps) => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar currentUser={currentUser} />
+      <Routes>
+        <Route path="/" element={<div>home</div>} />
+        <Route path="/create" element={<div>create</div>} />
+        <Route path="/view" element={<div>view</div>} />
+        <Route path="/discover" element={<div>discover</div>} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;

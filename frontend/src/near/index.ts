@@ -45,7 +45,7 @@ export const signIn = () => {
     {
       // contract and methods requesting access to
       contractId: nearConfig.contractName,
-      methodNames: [contract.method.name],
+      methodNames: [],
     },
     // optional name
     "NearSea" 
