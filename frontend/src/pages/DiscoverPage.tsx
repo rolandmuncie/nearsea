@@ -1,7 +1,9 @@
+import "../index.css"
+
 const DiscoverPage = () => {
   return (
     <>
-      <div>discover page</div>
+      <div className="page-container">discover page</div>
     </>
   );
 };

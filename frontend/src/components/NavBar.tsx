@@ -1,12 +1,12 @@
 import * as React from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
@@ -33,7 +33,15 @@ const NavBar = ({ currentUser }: NavBarProps): JSX.Element => {
   };
 
   return (
-    <AppBar position="sticky">
+    <AppBar
+      position="sticky"
+      sx={{
+        backgroundColor: "white",
+        padding: "0 20px",
+        borderBottom: "4px solid rgb(136, 230, 251)",
+        boxShadow: "0 4px 2px -2px rgba(0,0,0,0.12)"
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -41,7 +49,10 @@ const NavBar = ({ currentUser }: NavBarProps): JSX.Element => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: "none", md: "flex", cursor: "pointer"  } }}
+            sx={{
+              mr: 2,
+              display: { xs: "none", md: "flex", cursor: "pointer" },
+            }}
           >
             NEARSea
           </Typography>
@@ -76,7 +87,10 @@ const NavBar = ({ currentUser }: NavBarProps): JSX.Element => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={() => navigate(`/${page.toLowerCase()}`)}>
+                <MenuItem
+                  key={page}
+                  onClick={() => navigate(`/${page.toLowerCase()}`)}
+                >
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -87,7 +101,10 @@ const NavBar = ({ currentUser }: NavBarProps): JSX.Element => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "flex", md: "none", cursor: "pointer" } }}
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none", cursor: "pointer" },
+            }}
           >
             NEARSea
           </Typography>
@@ -96,18 +113,22 @@ const NavBar = ({ currentUser }: NavBarProps): JSX.Element => {
               <Button
                 key={page}
                 onClick={() => navigate(`/${page.toLowerCase()}`)}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, display: "block" }}
               >
-                {page}
+                <Typography color="text.primary">{page}</Typography>
               </Button>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             {currentUser ? (
-              <Button sx={{ my: 2, color: "white", display: "block" }} onClick={signOut}>Sign out</Button>
+              <Button sx={{ my: 2, display: "block" }} onClick={signOut}>
+                <Typography color="text.primary">Sign out </Typography>
+              </Button>
             ) : (
-              <Button sx={{ my: 2, color: "white", display: "block" }} onClick={signIn}>Log in</Button>
+              <Button sx={{ my: 2, display: "block" }} onClick={signIn}>
+                <Typography color="text.primary">Log in</Typography>
+              </Button>
             )}
           </Box>
         </Toolbar>

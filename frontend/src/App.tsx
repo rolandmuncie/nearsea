@@ -1,4 +1,6 @@
 import { Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./theme";
 import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import CreatePage from "./pages/CreatePage";
@@ -15,15 +17,17 @@ interface AppProps {
 
 const App = ({ contract, currentUser, nearConfig, wallet }: AppProps) => {
   return (
-    <div className="App">
-      <NavBar currentUser={currentUser} />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/create" element={<CreatePage />} />
-        <Route path="/view" element={<ViewPage />} />
-        <Route path="/discover" element={<DiscoverPage />} />
-      </Routes>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <NavBar currentUser={currentUser} />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/create" element={<CreatePage />} />
+          <Route path="/view" element={<ViewPage />} />
+          <Route path="/discover" element={<DiscoverPage />} />
+        </Routes>
+      </div>
+    </ThemeProvider>
   );
 };
 

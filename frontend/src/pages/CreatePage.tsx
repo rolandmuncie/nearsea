@@ -1,5 +1,6 @@
 import { useState } from "react";
 import HorizontalStepper from "../components/Stepper";
+import "../index.css"
 
 const CreatePage = () => {
   const UploadStep = () => {
@@ -22,9 +23,9 @@ const CreatePage = () => {
   };
 
   return (
-    <>
+    <div className="page-container">
       <HorizontalStepper onNextStep={onNextStep} children={activeStep} />
-    </>
+    </div>
   );
 };
 

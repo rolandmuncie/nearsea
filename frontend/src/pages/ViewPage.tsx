@@ -1,7 +1,9 @@
+import "../index.css"
+
 const ViewPage = () => {
   return (
     <>
-      <div>view page</div>
+      <div className="page-container">view page</div>
     </>
   );
 };
