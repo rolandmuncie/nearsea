@@ -18,7 +18,7 @@ const CreatePage = ({ currentUser }: any) => {
         </Typography>
         <Typography variant="subtitle1" component="p" sx={{ margin: "30px 0" }}>
           For now we accept links to publicly hosted files. In future you will
-          be able to upload files directly from your computer.
+          be able to upload media, pdf and e-book files directly from your computer.
         </Typography>
         <Box
           sx={{
