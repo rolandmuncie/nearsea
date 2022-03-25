@@ -6,7 +6,6 @@ import HomePage from "./pages/HomePage";
 import CreatePage from "./pages/CreatePage";
 import ViewPage from "./pages/ViewPage";
 import DiscoverPage from "./pages/DiscoverPage";
-import "./App.css";
 
 interface AppProps {
   contract: any;
@@ -18,12 +17,12 @@ interface AppProps {
 const App = ({ contract, currentUser, nearConfig, wallet }: AppProps) => {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
+      <div>
         <NavBar currentUser={currentUser} />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/create" element={<CreatePage />} />
-          <Route path="/view" element={<ViewPage />} />
+          <Route path="/create" element={<CreatePage currentUser={currentUser} />} />
+          <Route path="/view" element={<ViewPage currentUser={currentUser} />} />
           <Route path="/discover" element={<DiscoverPage />} />
         </Routes>
       </div>

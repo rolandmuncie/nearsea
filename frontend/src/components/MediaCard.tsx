@@ -3,14 +3,26 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+import circle from "../circle.svg";
+import triangle from "../triangle.svg";
+import hexagon from "../hexagon.svg";
 import "../index.css";
+
+const icons: any = {
+  "create": circle,
+  "view": triangle,
+  "discover": hexagon,
+}
 
 export default function MediaCard({ id, title, text }: any) {
   const navigate = useNavigate();
   return (
-    <Card sx={{ maxWidth: 300, boxShadow: "0.5rem 0.5rem rgb(3, 12, 28), -0.5rem -0.5rem #ccc", margin: "0 10px" }}>
+    <Card sx={{ maxWidth: 300, boxShadow: "none", backgroundColor: "transparent", margin: "0 10px" }}>
       <CardActionArea onClick={() => navigate(`/${id}`)}>
-        <div className={`${id}-svg`}></div>
+      <img
+          src={icons[id]}
+          alt={`${id} icon`}
+        />
         <CardContent>
           <Typography gutterBottom variant="h6" component="h3">
             {title}

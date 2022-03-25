@@ -5,7 +5,7 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 
-const steps = ["Upload", "Verify", "Finish"];
+const steps = ["Upload", "Add detail", "Mint"];
 
 export default function HorizontalStepper({ children, onNextStep }: any) {
   const [activeStep, setActiveStep] = useState(0);
@@ -25,7 +25,7 @@ export default function HorizontalStepper({ children, onNextStep }: any) {
     <Box
       sx={{
         width: "100%",
-        height: "90vh",
+        height: "75vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -50,7 +50,7 @@ export default function HorizontalStepper({ children, onNextStep }: any) {
       </Stepper>
       {activeStep === steps.length ? (
         <>
-          <p>done</p>
+          <p>Transaction is being confirmed on NEAR</p>
         </>
       ) : (
         <>
@@ -65,7 +65,7 @@ export default function HorizontalStepper({ children, onNextStep }: any) {
               Back
             </Button>
             <Box sx={{ flex: "1 1 auto" }} />
-            <Button onClick={handleNext}>
+            <Button color="inherit" onClick={handleNext}>
               {activeStep === steps.length - 1 ? "Finish" : "Next"}
             </Button>
           </Box>

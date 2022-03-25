@@ -49,6 +49,7 @@ const NavBar = ({ currentUser }: NavBarProps): JSX.Element => {
             variant="h6"
             noWrap
             component="div"
+            color="text.primary"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex", cursor: "pointer" },
@@ -64,7 +65,6 @@ const NavBar = ({ currentUser }: NavBarProps): JSX.Element => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
             >
               <MenuIcon />
             </IconButton>
@@ -101,6 +101,7 @@ const NavBar = ({ currentUser }: NavBarProps): JSX.Element => {
             variant="h6"
             noWrap
             component="div"
+            color="text.primary"
             sx={{
               flexGrow: 1,
               display: { xs: "flex", md: "none", cursor: "pointer" },
@@ -123,7 +124,7 @@ const NavBar = ({ currentUser }: NavBarProps): JSX.Element => {
           <Box sx={{ flexGrow: 0 }}>
             {currentUser ? (
               <Button sx={{ my: 2, display: "block" }} onClick={signOut}>
-                <Typography color="text.primary">Sign out </Typography>
+                <Typography color="text.primary">Sign out</Typography>
               </Button>
             ) : (
               <Button sx={{ my: 2, display: "block" }} onClick={signIn}>

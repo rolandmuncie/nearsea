@@ -55,7 +55,7 @@ const HomePage = () => {
       </div>
       <div
         className="page-container"
-        style={{ backgroundImage: "linear-gradient(180deg, #dcf1f5, white)" }}
+        style={{ backgroundImage: "linear-gradient(180deg, rgb(136, 230, 251, 0.1), white)" }}
       >
         <Typography variant="h2" component="h2" sx={{ margin: "40px 0" }}>
           Use NEARSea
