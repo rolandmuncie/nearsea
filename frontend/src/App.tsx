@@ -21,8 +21,8 @@ const App = ({ contract, currentUser, nearConfig, wallet }: AppProps) => {
         <NavBar currentUser={currentUser} />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/create" element={<CreatePage currentUser={currentUser} />} />
-          <Route path="/view" element={<ViewPage currentUser={currentUser} />} />
+          <Route path="/create" element={<CreatePage wallet={wallet} />} />
+          <Route path="/view" element={<ViewPage currentUser={currentUser} wallet = {wallet} />} />
           <Route path="/discover" element={<DiscoverPage />} />
         </Routes>
       </div>

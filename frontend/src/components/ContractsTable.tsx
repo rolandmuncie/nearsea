@@ -41,13 +41,8 @@ function createData(
   };
 }
 
-const rows = [
-  createData("Dummy Contract 1", 1648199532336, "Media", "url"),
-  createData("Dummy Contract 2", 1648199352336, "Rental contract", "url"),
-  createData("Dummy Contract 3", 1648199559336, "Legal agreement", "url"),
-  createData("Dummy Contract 4", 1648198552336, "Media", "url"),
-  createData("Dummy Contract 5", 1648197852336, "Something else", "url"),
-  createData("Dummy Contract 6", 1648194552336, "Example", "url"),
+var rows = [
+  createData("Dummy Contract 1", 1648199532336, "Media", "url")
 ];
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
@@ -207,13 +202,21 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
   );
 };
 
-export default function ContractsTable() {
-  const [order, setOrder] = React.useState<Order>("asc");
+export default function ContractsTable(result:any) {
+  const [order, setOrder] = React.useState<Order>("desc");
   const [orderBy, setOrderBy] = React.useState<keyof Data>("date");
   const [selected, setSelected] = React.useState<readonly string[]>([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(20);
 
+  rows = [];
+  result.items.forEach(function(item:any) {
+    //Table relies on unique column title/name. So add a random number as a temporary fix
+    const title = item.metadata.title ? item.metadata.title : "Empty title: " + Math.random();
+    rows.push(createData(title, item.metadata.issued_at, "Media", item.metadata.media))
+  });
+  
+  
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
     property: keyof Data
@@ -316,7 +319,7 @@ export default function ContractsTable() {
                       </TableCell>
                       <TableCell align="left">{row.type}</TableCell>
                       <TableCell align="left">
-                        <Link href={row.link}>Link</Link>
+                        <Link href={row.link} target="_blank">Link</Link>
                       </TableCell>
                     </TableRow>
                   );
