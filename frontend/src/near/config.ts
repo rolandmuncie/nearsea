@@ -21,7 +21,8 @@ export default function getConfig(env: Env) {
         nodeUrl: 'https://rpc.testnet.near.org',
         contractName: CONTRACT_NAME,
         walletUrl: 'https://wallet.testnet.near.org',
-        helperUrl: 'https://helper.testnet.near.org'
+        helperUrl: 'https://helper.testnet.near.org',
+        contractId: 'dev-1635425543381-88447653838944'
       }
     case 'betanet':
       return {

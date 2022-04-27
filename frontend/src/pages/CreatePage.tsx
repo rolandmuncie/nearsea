@@ -4,8 +4,9 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import "../index.css";
+import { handleMint } from "./../near/actions";
 
-const CreatePage = ({ currentUser }: any) => {
+const CreatePage = ({ wallet }: any) => {
   const [file, setFile] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -81,6 +82,9 @@ const CreatePage = ({ currentUser }: any) => {
   };
 
   const MintStep = () => {
+
+    handleMint(wallet, name, description, file);
+
     return (
       <>
         <Typography variant="h4" component="h4">
@@ -100,7 +104,7 @@ const CreatePage = ({ currentUser }: any) => {
     setActiveStep(steps[nextStep]);
   };
 
-  if (!currentUser)
+  if (!wallet)
     return (
       <div className="page-container">
         <Typography variant="subtitle2" component="p">

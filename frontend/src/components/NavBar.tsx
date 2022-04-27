@@ -13,7 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { signIn, signOut } from "../near";
 
 interface NavBarProps {
-  currentUser: string;
+  currentUser: any;
 }
 
 const pages = ["Create", "View", "Discover"];
@@ -120,7 +120,9 @@ const NavBar = ({ currentUser }: NavBarProps): JSX.Element => {
               </Button>
             ))}
           </Box>
-
+          {currentUser ? (
+            <Typography color="text.primary">{currentUser.accountId}</Typography>
+          ) : (<Typography color="text.primary"></Typography>)}
           <Box sx={{ flexGrow: 0 }}>
             {currentUser ? (
               <Button sx={{ my: 2, display: "block" }} onClick={signOut}>
