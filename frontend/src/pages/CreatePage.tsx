@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import "../index.css";
-import { handleMint } from "./../near/actions";
+import { handleMint } from "./../near/index";
 
 const CreatePage = ({ wallet }: any) => {
   const [file, setFile] = useState("");

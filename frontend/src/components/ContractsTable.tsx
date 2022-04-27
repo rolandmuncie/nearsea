@@ -207,7 +207,7 @@ export default function ContractsTable(result:any) {
   const [orderBy, setOrderBy] = React.useState<keyof Data>("date");
   const [selected, setSelected] = React.useState<readonly string[]>([]);
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(20);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   rows = [];
   result.items.forEach(function(item:any) {

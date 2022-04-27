@@ -1,7 +1,7 @@
 import ContractsTable from "../components/ContractsTable";
 import Typography from "@mui/material/Typography";
 import "../index.css";
-import { loadItems } from "../near/views";
+import { retrieveOwnedItems } from "../near/index";
 import React, { useEffect, useState } from 'react';
 
 
@@ -11,7 +11,7 @@ const ViewPage = ({ currentUser, wallet }: any) => {
 
   useEffect(() => {
     const fetchData = async (wallet:any) => {
-       const results = await loadItems(wallet);
+       const results = await retrieveOwnedItems(wallet);
        setResults(results);
     }
   
