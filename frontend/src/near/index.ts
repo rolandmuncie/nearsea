@@ -5,6 +5,14 @@ let contract: any;
 let wallet: any;
 let nearConfig: any;
 
+export const {
+	utils: {
+		format: {
+			formatNearAmount, parseNearAmount
+		}
+	}
+} = nearAPI;
+
 export async function getNearInfo() {
   nearConfig = getConfig("testnet");
 
@@ -30,15 +38,35 @@ export async function getNearInfo() {
   return { contract, currentUser, nearConfig, wallet };
 }
 
-// -----------------------------------------------------------------------------------
-// view functions
-// -----------------------------------------------------------------------------------
+export async function retrieveOwnedItems(wallet:any)  {
 
-// TODO
+  const nearConfig = getConfig("testnet");
+  /// user tokens
+  let tokens = []
+  let account = wallet.account();
+  if (account) {
+      tokens = await account.viewFunction(nearConfig.contractId, 'nft_tokens_for_owner', {
+          account_id: account.accountId,
+          from_index: '0',
+          limit: 50
+      });
+  }
 
-// -----------------------------------------------------------------------------------
-// change functions
-// -----------------------------------------------------------------------------------
+  return tokens;
+};
+
+export async function handleMint(wallet:any, name:string, description:string, link: string) {
+  const nearConfig = getConfig("testnet");
+
+  const metadata = { title: name, description: description, media: link, issued_at: Number(Date.now().toString())};
+  const deposit = parseNearAmount('0.1');
+
+  await wallet.account().functionCall(nearConfig.contractId, 'nft_mint', {
+      token_id: 'token-' + Date.now(),
+      metadata
+  }, '200000000000000', deposit);
+
+};
 
 export const signIn = () => {
   wallet.requestSignIn(
