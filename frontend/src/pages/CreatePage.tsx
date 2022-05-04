@@ -5,11 +5,31 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import "../index.css";
 import { handleMint } from "./../near/index";
+import { isValidLink } from "../helpers";
 
 const CreatePage = ({ currentUser, wallet }: any) => {
   const [file, setFile] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [error, setError] = useState("");
+
+  const isInputValid = (activeStep: number): boolean => {
+    if (activeStep === 0) {
+      if (!file) {
+        setError("Please fill in all inputs to proceed.");
+        return false;
+      }
+      if (!isValidLink(file)) {
+        setError("Please use a valid link.");
+        return false;
+      }
+    } else if (activeStep === 1 && (!name || !description)) {
+      setError("Please fill in all inputs to proceed.");
+      return false;
+    }
+    setError("");
+    return true;
+  };
 
   const UploadStep = (file: string) => {
     return (
@@ -116,10 +136,15 @@ const CreatePage = ({ currentUser, wallet }: any) => {
 
   return (
     <div className="page-container">
-      <HorizontalStepper onNextStep={onNextStep}>
+      <HorizontalStepper onNextStep={onNextStep} isInputValid={isInputValid}>
         {activeStep === "upload" && UploadStep(file)}
         {activeStep === "detail" && DetailStep(name, description)}
         {activeStep === "mint" && MintStep()}
+        {error && (
+          <Typography variant="subtitle2" component="p" color="red">
+            {error}
+          </Typography>
+        )}
       </HorizontalStepper>
     </div>
   );

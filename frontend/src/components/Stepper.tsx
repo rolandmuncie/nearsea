@@ -7,10 +7,15 @@ import Button from "@mui/material/Button";
 
 const steps = ["Upload", "Add detail", "Mint"];
 
-export default function HorizontalStepper({ children, onNextStep }: any) {
+export default function HorizontalStepper({
+  children,
+  onNextStep,
+  isInputValid,
+}: any) {
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
+    if (isInputValid(activeStep) !== true) return;
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
@@ -21,6 +26,7 @@ export default function HorizontalStepper({ children, onNextStep }: any) {
   useEffect(() => {
     onNextStep(activeStep);
   }, [activeStep, onNextStep]);
+
   return (
     <Box
       sx={{
