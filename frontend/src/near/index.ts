@@ -63,7 +63,8 @@ export async function handleMint(wallet:any, name:string, description:string, li
 
   await wallet.account().functionCall(nearConfig.contractId, 'nft_mint', {
       token_id: 'token-' + Date.now(),
-      metadata
+      metadata,
+      receiver_id: wallet.getAccountId()
   }, '200000000000000', deposit);
 
 };
