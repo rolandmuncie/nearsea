@@ -6,7 +6,7 @@ import TextField from "@mui/material/TextField";
 import "../index.css";
 import { handleMint } from "./../near/index";
 
-const CreatePage = ({ wallet }: any) => {
+const CreatePage = ({ currentUser, wallet }: any) => {
   const [file, setFile] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -19,7 +19,8 @@ const CreatePage = ({ wallet }: any) => {
         </Typography>
         <Typography variant="subtitle1" component="p" sx={{ margin: "30px 0" }}>
           For now we accept links to publicly hosted files. In future you will
-          be able to upload media, pdf and e-book files directly from your computer.
+          be able to upload media, pdf and e-book files directly from your
+          computer.
         </Typography>
         <Box
           sx={{
@@ -82,7 +83,6 @@ const CreatePage = ({ wallet }: any) => {
   };
 
   const MintStep = () => {
-
     handleMint(wallet, name, description, file);
 
     return (
@@ -91,7 +91,8 @@ const CreatePage = ({ wallet }: any) => {
           Mint your contract on NEAR
         </Typography>
         <Typography variant="subtitle1" component="p" sx={{ margin: "30px 0" }}>
-          Something about why this step is necessary etc. Include transaction cost and button to submit, i.e. go to NEAR to approve transaction.
+          Something about why this step is necessary etc. Include transaction
+          cost and button to submit, i.e. go to NEAR to approve transaction.
         </Typography>
       </>
     );
@@ -104,7 +105,7 @@ const CreatePage = ({ wallet }: any) => {
     setActiveStep(steps[nextStep]);
   };
 
-  if (!wallet)
+  if (!currentUser)
     return (
       <div className="page-container">
         <Typography variant="subtitle2" component="p">

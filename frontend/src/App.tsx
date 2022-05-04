@@ -8,21 +8,27 @@ import ViewPage from "./pages/ViewPage";
 import DiscoverPage from "./pages/DiscoverPage";
 
 interface AppProps {
-  contract: any;
   currentUser: any;
-  nearConfig: any;
   wallet: any;
+  contract?: any;
+  nearConfig?: any;
 }
 
-const App = ({ contract, currentUser, nearConfig, wallet }: AppProps) => {
+const App = ({ currentUser, wallet }: AppProps) => {
   return (
     <ThemeProvider theme={theme}>
       <div>
         <NavBar currentUser={currentUser} />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/create" element={<CreatePage wallet={wallet} />} />
-          <Route path="/view" element={<ViewPage currentUser={currentUser} wallet = {wallet} />} />
+          <Route
+            path="/create"
+            element={<CreatePage currentUser={currentUser} wallet={wallet} />}
+          />
+          <Route
+            path="/view"
+            element={<ViewPage currentUser={currentUser} wallet={wallet} />}
+          />
           <Route path="/discover" element={<DiscoverPage />} />
         </Routes>
       </div>
